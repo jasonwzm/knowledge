@@ -1,10 +1,13 @@
 package com.redhat.simple;
 
+import com.redhat.Greeting;
+
 rule "Hello World"
 ruleflow-group "greeting"
 
 	when
-	
+		$greeting: Greeting(greeting == null);
 	then
 		System.out.println("Hello Drools");
+		modify($greeting) {setGreeting("Hello, World!")}
 end
